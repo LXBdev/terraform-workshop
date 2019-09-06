@@ -4,8 +4,16 @@ resource "azurerm_resource_group" "lab1" {
   tags     = "${var.tags}"
 }
 
+resource "random_string" "random" {
+  length  = 8
+  special = false
+  upper   = false
+  lower   = true
+}
+
+
 resource "azurerm_storage_account" "labstorage" {
-  name                     = "testaitterraformlab"
+  name                     = "testaitterrafor${random_string.random.result}"
   resource_group_name      = "${azurerm_resource_group.lab1.name}"
   account_tier             = "Standard"
   account_replication_type = "LRS"
@@ -16,10 +24,10 @@ resource "azurerm_storage_account" "labstorage" {
 }
 
 resource "azurerm_application_insights" "appInsights" {
-  name = "aiterraform"
-  application_type = "web"
-  location                 = "${azurerm_resource_group.lab1.location}"
-  resource_group_name      = "${azurerm_resource_group.lab1.name}"
+  name                = "aiterraform"
+  application_type    = "web"
+  location            = "${azurerm_resource_group.lab1.location}"
+  resource_group_name = "${azurerm_resource_group.lab1.name}"
 }
 
 
