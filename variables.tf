@@ -13,3 +13,8 @@ variable "tags" {
       customer = "AIT"
   }
 }
+
+variable "webapplocs" {
+    description = "webapp locations"
+    default = ["westeurope", "uksouth", "northeurope"]
+}
