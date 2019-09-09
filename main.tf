@@ -27,6 +27,10 @@ output "saKey" {
   value = "${azurerm_storage_account.labstorage.primary_connection_string}"
 }
 
+locals {
+  webappsPerLocation = 3
+}
+
 
 resource "azurerm_application_insights" "appInsights" {
   name                = "aiterraform"
@@ -50,8 +54,8 @@ resource "azurerm_app_service_plan" "webapp-plan" {
 }
 
 resource "azurerm_app_service" "webapp" {
-  name                = "ait-terraform-lab-alex-${element(var.webapplocs, count.index)}"
-  count               = "${length(var.webapplocs)}"
+  name                = "${format("ait-terraform-lab-alex-%s-%02d", element(var.webapplocs, count.index), count.index)}"
+  count               = "${length(var.webapplocs) * local.webappsPerLocation}"
   resource_group_name = "${azurerm_resource_group.lab1.name}"
   location            = "${element(azurerm_app_service_plan.webapp-plan.*.location, count.index)}"
   app_service_plan_id = "${element(azurerm_app_service_plan.webapp-plan.*.id, count.index)}"
