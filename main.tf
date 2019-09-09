@@ -23,6 +23,11 @@ resource "azurerm_storage_account" "labstorage" {
   }
 }
 
+output "saKey" {
+  value = "${azurerm_storage_account.labstorage.primary_connection_string}"
+}
+
+
 resource "azurerm_application_insights" "appInsights" {
   name                = "aiterraform"
   application_type    = "web"
