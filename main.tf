@@ -36,9 +36,11 @@ resource "azurerm_app_service_plan" "webapp-plan" {
   count               = "${length(var.webapplocs)}"
   location            = "${element(var.webapplocs, count.index)}"
   resource_group_name = "${azurerm_resource_group.lab1.name}"
+  kind                = "Linux"
+  reserved            = true
   sku {
-    tier = "Standard"
-    size = "S1"
+    tier = "Free"
+    size = "F1"
   }
 }
 
