@@ -10,3 +10,6 @@
 
 # provider file containing subscriptionId and (potentially) secrets
 provider.tf
+
+# backend file containing storage account key
+backend.tf
