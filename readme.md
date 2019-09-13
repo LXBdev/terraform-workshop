@@ -5,6 +5,7 @@ https://azurecitadel.com/automation/terraform/
 Diese Datei beinhaltet die Agenda bzw. Speaker Notes.
 In der Workshop.md ist das "Aufgabenprotokoll" während des Vortrags.
 Für gewisse Teilbereiche gibt es jeweils einen branch mit Code für den aktuellen Fortschritt.
+Wenn man den Workshop nochmal machen will, würde ich eher Ordner machen als Branches, und jeweils einen eigenen Ressource-Group-Name vergeben.
 
 ## Einstieg
 - Infrastructure as Code
