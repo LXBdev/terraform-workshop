@@ -10,11 +10,11 @@
 
 # 2 Make it random
 - storage account should contain random string part to make it unique
--- random part must not be checked in
--- must not be a variable
--- hint: random string
--- bonus combine with variable and make sure it is not longer than 23 chars
--- "terraform$(myvariable)..."
+  - random part must not be checked in
+  - must not be a variable
+  - hint: random string
+  - bonus combine with variable and make sure it is not longer than 23 chars
+  - "terraform$(myvariable)..."
 
 ```terraform
 resource "random_string" "random" {
